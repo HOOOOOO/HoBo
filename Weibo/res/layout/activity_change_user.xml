@@ -1,0 +1,57 @@
+<com.example.view.SwipeBackLayout 
+    android:id="@+id/swpl_changUser"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#80000000"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <LinearLayout 
+    android:id="@+id/ll_activity_back"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.weibo.ChangeUserActivity" 
+    android:orientation="vertical">
+    
+    <View 
+        android:id="@+id/v_status_background"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:background="@android:color/transparent"/>
+    
+   
+        <include 
+            layout="@layout/simple_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        
+         <ListView 
+        android:id="@+id/users_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:listSelector="@android:color/transparent"
+        android:layout_margin="12dp"
+        android:headerDividersEnabled="false"
+        android:dividerHeight="0.1dp"
+        android:divider="#50cccccc"
+        android:background="@drawable/shape_rounded_rectangle">
+        
+    </ListView>
+    
+    <Button 
+        android:id="@+id/btn_adduser"
+        android:layout_margin="12dp"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:text="添加账号"
+        android:textSize="17sp"
+        android:textColor="@color/colorWeiboText1"
+        android:background="@drawable/shape_rounded_rectangle"
+        android:shadowColor="@color/tran"
+        android:layout_below="@id/users_list"
+        />
+</LinearLayout>
+
+</com.example.view.SwipeBackLayout>
+    
+    

@@ -1,0 +1,35 @@
+<com.example.view.SwipeBackLayout
+    android:id="@+id/sl_swipeback"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#80000000"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <RelativeLayout 
+        android:id="@+id/rl_background"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        <View 
+            android:layout_alignParentTop="true"
+            android:id="@+id/v_status_background"
+            android:layout_width="fill_parent"
+            android:background="@android:color/transparent"
+            android:layout_height="25dp"
+            />
+        <RelativeLayout 
+            android:id="@+id/rl_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/v_status_background"></RelativeLayout>
+        <include 
+            android:id="@+id/simpletitlebar"
+            android:layout_below="@id/v_status_background"
+            layout="@layout/simple_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+    
+</com.example.view.SwipeBackLayout>

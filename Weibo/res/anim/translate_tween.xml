@@ -1,0 +1,5 @@
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/anticipate_overshoot_interpolator"
+    android:fromXDelta="0" android:toXDelta="0"
+    android:fromYDelta="470" android:toYDelta="220"
+    android:duration="2000" />

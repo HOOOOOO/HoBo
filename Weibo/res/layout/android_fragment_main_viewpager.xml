@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+<com.example.view.HideTitleBarLayout
+    android:id="@+id/hidetitlelayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <com.android.style.AndroidTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"/>
+    
+    <com.example.view.ColorLayout 
+        android:id="@+id/cl_colortable"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-200dp"
+        >   
+    </com.example.view.ColorLayout>
+
+</com.example.view.HideTitleBarLayout>
+</RelativeLayout>

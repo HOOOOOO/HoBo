@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout 
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:orientation="vertical">
+        <View 
+            android:id="@+id/v_status_background" 
+            android:layout_width="fill_parent" 
+            android:layout_height="25dp" />
+        <android.support.v4.widget.DrawerLayout 
+            android:id="@+id/dl_drawerLayout" 
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent">
+            <include 
+                layout="@layout/android_fragment_main_viewpager" 
+                android:id="@+id/android_fragment_main_viewpager" 
+                android:clickable="true" 
+                android:layout_width="fill_parent" 
+                android:layout_height="fill_parent" />
+            <RelativeLayout 
+                android:id="@+id/left_drawer" 
+                android:layout_width="300sp" 
+                android:layout_height="fill_parent" 
+                android:layout_gravity="left"></RelativeLayout>
+        </android.support.v4.widget.DrawerLayout>
+    </LinearLayout>
+    <View 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/colorNightBackgrond"/>
+</RelativeLayout>

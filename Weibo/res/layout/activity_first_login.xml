@@ -1,0 +1,45 @@
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:test="http://schemas.android.com/apk/res/com.example.weibo"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout1"
+    android:padding="30dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    tools:context="com.example.weibo.MainActivity" >
+
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="17sp"
+        android:background="@drawable/white_btn_backgruand"
+        android:text="授权登陆" 
+        android:visibility="visible"
+        android:textColor="@color/weibo_text_color"/>
+
+    <com.example.view.RoundImageView
+        android:id="@+id/ri_usericon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/weibo_icon" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ri_usericon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="#cccccc"
+        android:textSize="20sp" />
+
+</RelativeLayout>

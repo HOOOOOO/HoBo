@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#33465d</color>
+    <color name="theme_color_dark">#253547</color>
+    <color name="unselect">#ff797979</color>
+    <color name="black50">#f7000000</color>
+    
+    <color name="titlebar_black">#33465d</color>
+    <color name="titlebar_pressed_color">#192c43</color>
+    <color name="weibo_layout_background">#ffffff</color>
+    <color name="divide_color">#cccccc</color>
+    <color name="theme_backgruand_color">#f7f7f7</color>
+    <color name="setting_text_color">#cccccc</color>
+    <color name="white_btn_press_color">#20000000</color>
+    <color name="tran">#00000000</color>
+    
+    <color name="weibo_text_color">#313638</color>
+    
+    <color name="color_shadow">#e0000000</color>
+    
+    <dimen name="marginLandR">10dip</dimen>
+    <dimen name="marginTandE">10dip</dimen>
+    
+    
+    
+    <color name="colorThemeGreen1">#2ecc71</color>
+    <color name="colorThemeGreen2">#27ae60</color>
+    <color name="colorThemeGreen3">#1abc9c</color>
+    <color name="colorThemeGreen4">#16a085</color>
+    
+    <color name="colorThemeBlue1">#3498db</color>
+    <color name="colorThemeBlue2">#2980b9</color>
+    <color name="colorThemeBlue3">#34495e</color>
+    <color name="colorThemeBlue4">#2c3e50</color>
+    <color name="colorThemeBlue5">#283949</color>
+    
+    <color name="colorThemeYellow1">#ffe900</color>
+    <color name="colorThemeYellow2">#f9df19</color>
+    <color name="colorThemeYellow3">#e8ed3b</color>
+    
+    <color name="colorThemeOrange1">#F1982E</color>
+    <color name="colorThemeOrange2">#e67e22</color>
+    <color name="colorThemeOrange3">#f37021</color>
+    <color name="colorThemeOrange4">#d35400</color>
+        
+    <color name="colorThemeRed1">#e98d70</color>
+    <color name="colorThemeRed2">#C93756</color>
+    <color name="colorThemeRed3">#c0392b</color>
+    <color name="colorThemeRed4">#aa4630</color>
+    
+    <color name="colorThemeWhite1">#eaebeb</color>
+    <color name="colorThemeWhite2">#bdc3c7</color>
+    <color name="colorThemeGray1">#95a5a6</color>
+    <color name="colorThemeGray2">#7f8c8d</color>    
+    
+    <color name="colorThemeBlack1">#18171c</color>
+    <color name="colorTitle1">#585858</color>
+    
+    <color name="colorWeiboText1">#585858</color>
+    <color name="colorNightWhite">#b3bbc3</color>
+    <color name="colorNightDivide">#0dffffff</color>
+    
+    <color name="colorNightBackgrond">#20000000</color>
+</resources>

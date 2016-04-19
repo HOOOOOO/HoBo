@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.view.SwipeBackLayout 
+    android:id="@+id/swipeback"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#80000000"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <LinearLayout
+    	android:id="@+id/ll_background"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical">
+	
+    <View
+        android:id="@+id/v_statusview"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:background="@android:color/transparent"/>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        
+        <RelativeLayout 
+       	 	android:id="@+id/rl_contain"
+        	android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        ></RelativeLayout>
+        
+        <include
+            android:id="@+id/stitle_userPage"
+            layout="@layout/simple_title" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"/>
+    </RelativeLayout>
+    
+    
+    
+</LinearLayout>
+</com.example.view.SwipeBackLayout>

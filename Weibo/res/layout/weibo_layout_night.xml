@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:orientation="vertical"
+    android:paddingBottom="10dp">  
+  <!--博主信息-->  
+  <LinearLayout 
+      android:layout_width="fill_parent" 
+      android:layout_height="70dip" 
+      android:orientation="horizontal" 
+      android:gravity="center_vertical" 
+      android:paddingLeft="@dimen/marginLandR" 
+      android:paddingRight="@dimen/marginLandR" 
+      android:background="@drawable/shape_rounded_rectangle_top_night"> 
+    
+    <com.example.view.RoundImageView 
+        android:id="@+id/rimg_userIcon" 
+        android:layout_width="45dp" 
+        android:layout_height="45dp" 
+        android:background="@drawable/usericon_backgurand_night" />  
+    
+    <RelativeLayout 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="10dip"> 
+      
+      <LinearLayout 
+          android:id="@+id/ll_userNameLayout" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content" 
+          android:orientation="horizontal" 
+          android:gravity="center_vertical"> 
+        
+        <com.example.view.WeiboTextView 
+            android:id="@+id/wtv_userName" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_alignParentLeft="true" 
+            android:layout_alignParentTop="true" 
+            android:text="代课教师林科大" 
+            android:textColor="@color/colorNightWhite" 
+            android:textSize="16sp" 
+            android:textStyle="bold"/>  
+        
+        <ImageView 
+            android:id="@+id/img_avatarVip" 
+            android:layout_width="13dip" 
+            android:layout_height="13dip" 
+            android:layout_toRightOf="@id/wtv_userName" 
+            android:layout_marginLeft="2dp" 
+            android:src="@drawable/avatar_vip" 
+            android:visibility="visible" 
+            android:tint="@color/colorNightWhite"/> 
+      
+      </LinearLayout>  
+      
+      <TextView 
+          android:id="@+id/tv_createTime" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content" 
+          android:layout_alignParentLeft="true" 
+          android:layout_below="@id/ll_userNameLayout" 
+          android:text="刚刚" 
+          android:textColor="@color/colorNightWhite" 
+          android:textSize="12sp"/> 
+    
+    </RelativeLayout> 
+  
+  </LinearLayout>  
+  
+  <!--微博正文-->  
+  <LinearLayout 
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content" 
+      android:orientation="vertical" 
+      android:gravity="center_vertical" 
+      android:background="@color/colorThemeBlue3"> 
+      
+    <com.example.view.WeiboTextView 
+        android:id="@+id/wtv_weiboText" 
+        android:text="发撒大苏打大的撒大苏打三大"
+        style="@style/weibo_text_style_night"/> 
+         
+    <View 
+        android:layout_width="fill_parent" 
+        android:layout_height="@dimen/marginTandE" 
+        android:id="@+id/v_weiboTextandPicDivide"/>  
+        
+    <com.example.view.NineGridlayout 
+        android:id="@+id/ngl_more" 
+        android:layout_height="0dip" 
+        android:layout_width="fill_parent"/> 
+         
+    <RelativeLayout 
+        android:id="@+id/rl_cimgOne"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <com.example.view.CustomImageView 
+        	android:id="@+id/cimgOne" 
+        	android:layout_width="fill_parent" 
+        	android:layout_height="wrap_content"
+        	android:minHeight="50dp"/>
+        <TextView 
+            android:padding="5dp"
+            android:id="@+id/tv_picsCount"
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:textSize="12sp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/shape_rounded_rectangle_black"/>  
+    </RelativeLayout>
+        
+    <View 
+        android:layout_width="fill_parent" 
+        android:layout_height="@dimen/marginTandE" 
+        android:id="@+id/v_weiboTextDivide"/> 
+  
+  </LinearLayout>  
+  
+  <!--转发正文-->  
+  <LinearLayout 
+      android:id="@+id/ll_retweetStatus" 
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content" 
+      android:orientation="vertical" 
+      android:background="@color/colorThemeBlue4" 
+      android:visibility="gone"> 
+      
+    <com.example.view.WeiboTextView 
+        android:id="@+id/wtv_retweetWeiboText" 
+        style="@style/weibo_text_style_night" 
+        android:paddingTop="10dp"/>  
+        
+    <com.example.view.NineGridlayout 
+        android:layout_marginTop="10dp"
+        android:id="@+id/ngl_retweetMore" 
+        android:layout_height="0dip" 
+        android:layout_width="fill_parent"/> 
+        
+    <View 
+        android:id="@+id/v_retweetWeiboTextandPicDivide"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/transparent"
+        />
+    <RelativeLayout 
+        android:id="@+id/rl_retweetCimgOne"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.example.view.CustomImageView 
+        	android:id="@+id/cimg_retweetOne" 
+        	android:layout_width="fill_parent" 
+        	android:layout_height="wrap_content"
+        	android:minHeight="50dp"/> 
+        <TextView 
+            android:padding="5dp"
+            android:gravity="center"
+            android:id="@+id/tv_retweetPicsCount"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/shape_rounded_rectangle_black"/>  
+    </RelativeLayout>
+        
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <TextView 
+            android:id="@+id/tv_retweetRepostCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="转发"
+            style="@style/weibo_btn_text_style_night"/>
+        <TextView 
+            android:id="@+id/tv_retweetCommentsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论"
+            style="@style/weibo_btn_text_style_night"/>
+        <TextView 
+            android:id="@+id/tv_retweetAttitudeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="赞"
+            style="@style/weibo_btn_text_style_night"/>
+        
+    </LinearLayout>
+  </LinearLayout>  
+  <!-- 转发评论栏 -->  
+  <RelativeLayout 
+      android:layout_width="fill_parent" 
+      android:layout_height="55dp" 
+      android:gravity="center_vertical" 
+      android:background="@drawable/shape_rounded_rectangle_bottom_night"> 
+    
+    <LinearLayout 
+        android:layout_width="wrap_content" 
+        android:layout_height="fill_parent" 
+        android:orientation="horizontal" 
+        android:layout_alignParentRight="true" 
+        android:layout_marginRight="@dimen/marginLandR" 
+        android:gravity="center_vertical"> 
+      <LinearLayout 
+          android:id="@+id/ll_repostLayout" 
+          style="@style/weibo_btn_layout_style">
+        <ImageView 
+            android:layout_width="20dip" 
+            android:layout_height="wrap_content" 
+            android:src="@drawable/repost" 
+            android:clickable="false"
+            android:tint="@color/colorNightWhite"/>  
+        <TextView 
+            android:id="@+id/tv_repostCount" 
+            style="@style/weibo_btn_text_style_night"/> 
+      </LinearLayout>  
+      <LinearLayout 
+          android:id="@+id/ll_commentLayout" 
+          style="@style/weibo_btn_layout_style">
+        
+          <ImageView 
+              android:layout_width="20dip" 
+              android:id="@+id/pinglun" 
+              android:layout_height="wrap_content" 
+              android:src="@drawable/chat" 
+              android:clickable="false"
+              android:tint="@color/colorNightWhite"/>  
+              
+        <TextView 
+            android:id="@+id/tv_commentCount" 
+            style="@style/weibo_btn_text_style_night"/>
+      </LinearLayout>  
+      
+      <LinearLayout 
+          android:id="@+id/ll_attitudeLayout" 
+          style="@style/weibo_btn_layout_style">
+        <ImageView 
+            android:layout_width="18dip" 
+            android:id="@+id/img_attitude" 
+            android:layout_height="wrap_content" 
+            android:src="@drawable/fav" 
+            android:clickable="false"
+            android:tint="@color/colorNightWhite"/>  
+        <TextView 
+            android:id="@+id/tv_attitudeCount" 
+            style="@style/weibo_btn_text_style_night"/> 
+      </LinearLayout> 
+    </LinearLayout>  
+    <ImageButton 
+        android:id="@+id/img_moreChoice" 
+        android:layout_width="50dp" 
+        android:layout_height="fill_parent" 
+        android:layout_alignParentLeft="true" 
+        android:layout_centerVertical="true" 
+        android:layout_marginLeft="5dp" 
+        android:src="@drawable/dashboard_post_control_share" 
+        android:background="@drawable/white_btn_backgruand"
+        android:tint="@color/colorNightWhite"/> 
+  </RelativeLayout> 
+</LinearLayout>

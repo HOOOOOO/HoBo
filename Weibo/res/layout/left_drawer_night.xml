@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout      
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/colorThemeBlue3" >
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:background="#00000000">
+        
+        <ImageView 
+            android:id="@+id/left_drawer_user_backgruand"
+            android:scaleType="centerCrop"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:alpha="10"/>
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+             <com.example.view.RoundImageView 
+            	android:id="@+id/left_drawer_user_image"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+            	android:background="@drawable/usericon_backgurand_night" />
+        <TextView 
+            android:id="@+id/left_drawer_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="#cccccc"
+            android:shadowRadius="2"
+            android:shadowDy="2"
+            android:shadowDx="2"
+            android:shadowColor="#0e000000"/>
+        </LinearLayout>
+       
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip">
+        <LinearLayout 
+            android:id="@+id/btn_following"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/white_btn_backgruand">
+            <TextView
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:text="关注"
+            	android:textSize="15sp"
+            	android:textColor="@color/colorNightWhite"
+            	android:gravity="center"/>
+            <TextView
+            	android:id="@+id/count_of_following"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:textColor="#cccccc"
+            	android:text=""
+            	android:textSize="15sp"
+            	android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout 
+            android:id="@+id/btn_status"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/white_btn_backgruand">
+            <TextView 
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:text="微博"
+            	android:textColor="@color/colorNightWhite"
+            	android:textSize="15sp"
+            	android:gravity="center"/>
+            <TextView 
+            	android:id="@+id/count_of_status"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:textColor="@color/colorNightWhite"
+            	android:text=""
+            	android:textSize="15sp"
+            	android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout 
+            android:id="@+id/btn_fans"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/white_btn_backgruand">
+            <TextView 
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:text="粉丝"
+            	android:textSize="15sp"
+            	android:textColor="@color/colorNightWhite"
+            	android:gravity="center"/>
+            <TextView 
+            	android:id="@+id/count_of_fans"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:textColor="@color/colorNightWhite"
+            	android:text=""
+            	android:textSize="15sp"
+            	android:gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="fill_parent"
+        android:layout_height="0.1dip"
+        android:background="@color/colorNightDivide"/>
+    
+    <ExpandableListView 
+        android:id="@+id/explv_groupList"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:groupIndicator="@null"
+    	android:divider="@null">
+    		    
+    </ExpandableListView>
+    		
+</LinearLayout>

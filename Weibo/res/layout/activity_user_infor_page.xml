@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f7f7f7">
+    
+    <com.example.view.TitleView
+        android:id="@+id/title"  
+        android:layout_width="fill_parent"  
+        android:layout_height="50sp" 
+        android:layout_alignParentTop="true"
+        android:visibility="gone">
+    </com.example.view.TitleView>
+    
+    <View 
+        android:id="@+id/titlebackground"
+        android:layout_width="fill_parent"
+        android:layout_height="50sp"
+        android:background="#ffffff"
+        android:visibility="gone"/>
+    
+    <TextView 
+        android:id="@+id/titletext"
+        android:layout_width="fill_parent"
+        android:layout_height="60sp"
+        android:background="#313638"
+        android:text="我的主页"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:visibility="invisible"/>
+        
+    <LinearLayout
+        android:id="@+id/lin1" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+    </LinearLayout>
+    
+    <com.example.view.PullToZoomScrollView
+        android:id="@+id/pullzoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <include
+                android:id="@+id/me_usericon_show"
+                layout="@layout/me_usericon_show"/>
+           <LinearLayout
+               android:id="@+id/lin2" 
+               android:layout_width="wrap_content"
+               android:layout_height="46sp"
+               android:orientation="horizontal">
+               
+               <include 
+                   layout="@layout/me_choose_bar"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/me_choose_bar"/>
+           </LinearLayout>
+            <include
+                layout="@layout/weibo_layout"/>
+             <include
+                layout="@layout/weibo_layout"/>
+             <include
+                layout="@layout/weibo_layout"/>
+             <include
+                layout="@layout/weibo_layout"/>
+             <include
+                layout="@layout/weibo_layout"/>
+             <include
+                layout="@layout/weibo_layout"/>
+        </LinearLayout>
+    </com.example.view.PullToZoomScrollView>
+</RelativeLayout>

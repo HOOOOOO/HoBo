@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.example.view.HideTitleBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hidetitlelayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    	xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	tools:context=".MainActivity">
+    	
+        <com.android.style.AndroidTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+        <!--  -->app:layout_scrollFlags="scroll|enterAlways"/>
+    
+    	<com.example.view.CustomViewPager
+        	android:id="@+id/pager"
+        	android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        	android:layout_alignParentTop="true"
+        	/>
+        
+    </android.support.design.widget.CoordinatorLayout>
+    
+    <com.example.view.ColorLayout 
+        android:id="@+id/cl_colortable"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-200dp"
+        >   
+    </com.example.view.ColorLayout>
+
+</com.example.view.HideTitleBarLayout>

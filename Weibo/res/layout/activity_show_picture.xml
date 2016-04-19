@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    
+    tools:context="com.example.weibo.ShowPictureActivity" 
+    android:background="@drawable/show_picture_backgrand">
+
+
+        
+        <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="40sp"
+            android:layout_height="30sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:text="原图"
+            android:textSize="12sp"
+            android:textColor="#c6c6c6"
+            android:background="@drawable/show_picture_button_bacgroud"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="40sp"
+            android:layout_height="30sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_toLeftOf="@id/button1"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/show_picture_button_bacgroud"
+            android:textSize="12sp"
+            android:text="保存"
+            android:textColor="#c6c6c6" />
+
+</RelativeLayout>
