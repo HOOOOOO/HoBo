@@ -6,8 +6,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
     
-    <dimen name="height_titlebar">55dp</dimen>
-    <dimen name="height_titlebar_shadow">3dp</dimen>
+    <dimen name="height_titlebar">56dp</dimen>
+    <dimen name="height_titlebar_shadow">2dp</dimen>
     
 
 </resources>

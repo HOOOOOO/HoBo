@@ -1,16 +1,11 @@
 package com.example.weibo;
 
 import com.example.view.SwipeBackLayout;
-import com.weibo.fragmentmainactivity.FragmentHomeActivity;
-import com.weibo.fragmentmainactivity.StatusListFragment;
+import com.weibo.fragment.StatusRecyclerViewFragment;
 import com.weibo.tools.MyApplication;
 
-import android.app.Activity;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,7 +32,7 @@ public class FavoriteActivity extends FragmentActivity {
 		textView.setTextColor(MyApplication.mTitleColor);
 		
 		android.support.v4.app.FragmentManager fm =  getSupportFragmentManager();
-		fm.beginTransaction().add(R.id.rl_content, StatusListFragment.newInstance(StatusListFragment.FAVORITE, null), null).commit();
+		fm.beginTransaction().add(R.id.rl_content, StatusRecyclerViewFragment.newInstance(StatusRecyclerViewFragment.FAVORITE, null), null).commit();
 		View tmpView = (View) findViewById(R.id.simpletitlebar);
 		tmpView.bringToFront();
 	}

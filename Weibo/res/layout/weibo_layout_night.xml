@@ -269,7 +269,7 @@
         android:layout_centerVertical="true" 
         android:layout_marginLeft="5dp" 
         android:src="@drawable/dashboard_post_control_share" 
-        android:background="@drawable/white_btn_backgruand"
+        android:background="@drawable/selector_white_btn"
         android:tint="@color/colorNightWhite"/> 
   </RelativeLayout> 
 </LinearLayout>

@@ -1,15 +1,10 @@
 package com.example.weibo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
-import com.android.style.AndroidTitleBar;
-import com.example.view.CustomDialogFragment;
-import com.example.view.CustomDialogFragment.DialogClickListener;
+import com.weibo.fragment.CustomDialogFragment;
+import com.weibo.fragment.CustomDialogFragment.DialogClickListener;
 import com.example.view.RoundImageView;
 import com.example.view.SwipeBackLayout;
 import com.sina.weibo.sdk.auth.AuthInfo;
@@ -26,22 +21,16 @@ import com.weibo.sql.DataHelper;
 import com.weibo.tools.AccessTokenKeeper;
 import com.weibo.tools.Constants;
 import com.weibo.tools.GetUserImageByURL;
-import com.weibo.tools.GetUserImgByPath;
 import com.weibo.tools.MyApplication;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -50,7 +39,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;

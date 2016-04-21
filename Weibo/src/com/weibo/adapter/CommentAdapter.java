@@ -2,15 +2,12 @@ package com.weibo.adapter;
 
 import java.util.ArrayList;
 
-import org.w3c.dom.Text;
-
 import com.example.view.RoundImageView;
 import com.example.view.WeiboTextView;
 import com.example.weibo.R;
 import com.example.weibo.UserPageActivity;
 import com.sina.weibo.sdk.openapi.models.Comment;
 import com.squareup.picasso.Picasso;
-import com.weibo.fragmentmainactivity.FragmentHomeActivity;
 import com.weibo.tools.MyApplication;
 import com.weibo.tools.Tools;
 

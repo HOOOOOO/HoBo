@@ -35,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainAdapter extends BaseAdapter {  
+public class StatusListAdapter extends BaseAdapter {
 	
 	private static final String ARTICLE = "...全文:";
 	private AsyncImageLoader asyncImageLoader;
@@ -46,14 +46,13 @@ public class MainAdapter extends BaseAdapter {
 	private ViewHolder holder;
 	
     
-	public MainAdapter(Context context, List<Status> wblist){    
+	public StatusListAdapter(Context context, List<Status> wblist){
         this.wblist = wblist;
         this.context = context;
     }         
     
 	public int getCount() {     
         // TODO Auto-generated method stub
-		//Log.e("MainAdapter.getCount", ""+wblist.size());
         return wblist.size();        
         }            
     public Object getItem(int arg0) {         

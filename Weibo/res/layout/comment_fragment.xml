@@ -10,7 +10,6 @@
     	android:layout_height="fill_parent"
     
     	android:orientation="vertical"
-    	android:padding="8dp"
     	android:background="@android:color/transparent">
     
     <android.support.v4.widget.SwipeRefreshLayout
@@ -50,7 +49,7 @@
             android:layout_height="fill_parent"
             android:textColor="#cccccccc"
             android:text="返回"
-            android:background="@drawable/white_btn_backgruand"/>
+            android:background="@drawable/selector_white_btn"/>
     </LinearLayout>
 </LinearLayout>
 </com.example.view.SwipeBackLayout>

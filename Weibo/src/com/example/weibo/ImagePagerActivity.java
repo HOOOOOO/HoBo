@@ -2,8 +2,8 @@ package com.example.weibo;
 
 import java.util.ArrayList;
 
-import com.example.imagepager.HackyViewPager;
-import com.example.imagepager.ImageDetailFragment;
+import com.example.view.HackyViewPager;
+import com.weibo.fragment.ImageShowFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -90,7 +90,7 @@ public class ImagePagerActivity extends FragmentActivity {
 		@Override
 		public Fragment getItem(int position) {
 			String url = fileList.get(position);
-			return ImageDetailFragment.newInstance(url);
+			return ImageShowFragment.newInstance(url);
 		}
 
 	}

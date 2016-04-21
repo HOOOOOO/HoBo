@@ -1,8 +1,7 @@
-package com.example.view;
+package com.weibo.fragment;
 
 import com.example.weibo.R;
 import com.weibo.tools.MyApplication;
-import com.weibo.tools.ScreenTools;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

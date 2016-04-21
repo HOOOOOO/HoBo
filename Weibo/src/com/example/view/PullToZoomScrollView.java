@@ -130,12 +130,7 @@ public class PullToZoomScrollView extends ScrollView{
                         isTouchOne=true;
                     }
                     boolean isSlideEvent = isSlideEvent(startX, (int)ev.getY(), startY, (int)ev.getY());
-        			//if(isSlideEvent) {
-        				//MyToast.makeText(getContext(), "横向滑动", Toast.LENGTH_SHORT).show();
-        				//return false;
-        			//}
-        			//MyToast.makeText(getContext(), "竖向滑动", Toast.LENGTH_SHORT).show();
-                    distance=(int)(ev.getY()-startY);
+        			distance=(int)(ev.getY()-startY);
                     if(distance>0){
                         if(distance/2 < (mScreenWidth - mTopViewHeight)){
                     	isBig=true;

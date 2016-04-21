@@ -1,4 +1,4 @@
-package com.android.style;
+package com.example.view;
 
 import com.example.weibo.MainActivity;
 import com.example.weibo.R;

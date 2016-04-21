@@ -1,40 +1,25 @@
-package com.example.imagepager;
+package com.weibo.fragment;
 
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
-import uk.co.senab.photoview.PhotoViewAttacher.OnPhotoTapListener;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.weibo.R;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.squareup.picasso.Picasso;
-import com.weibo.tools.CropSquareTransformation;
 import com.weibo.tools.FitcenterTransformation;
 import com.weibo.tools.GetImageWidthAndHeigth;
-import com.weibo.tools.ScreenTools;
 
 /**
  * 单张图片显示Fragment
  */
-public class ImageDetailFragment extends Fragment {
+public class ImageShowFragment extends Fragment {
 	private String mImageUrl;
 	private PhotoView mImageView;
 	private ProgressBar mProgressBar;
@@ -44,8 +29,8 @@ public class ImageDetailFragment extends Fragment {
 	private WebView mWebViewLargeImage;
 	private boolean isLargeImage;
 	
-	public static ImageDetailFragment newInstance(String imageUrl) {
-		final ImageDetailFragment f = new ImageDetailFragment();
+	public static ImageShowFragment newInstance(String imageUrl) {
+		final ImageShowFragment f = new ImageShowFragment();
 
 		final Bundle args = new Bundle();
 		args.putString("url", imageUrl);
@@ -62,7 +47,7 @@ public class ImageDetailFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		final View v = inflater.inflate(R.layout.image_detail_fragment, container, false);
+		final View v = inflater.inflate(R.layout.image_show_fragment, container, false);
 		mImageView = (PhotoView) v.findViewById(R.id.image);
 		mProgressBar = (ProgressBar) v.findViewById(R.id.loading);
 		mWebViewLargeImage = (WebView) v.findViewById(R.id.wv_large_image);

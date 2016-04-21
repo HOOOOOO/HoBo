@@ -1,21 +1,19 @@
 package com.example.weibo;
 
-import com.android.style.AndroidTitleBar;
-import com.android.style.AndroidTitleBar.OnClickButtonListener;
-import com.example.view.CustomViewPager;
+import com.example.view.AndroidTitleBar;
+import com.example.view.AndroidTitleBar.OnClickButtonListener;
 import com.example.view.HideTitleBarLayout;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.User;
-import com.weibo.fragmentmainactivity.FragmentHomeActivity;
-import com.weibo.fragmentmainactivity.LeftMenuFragment;
-import com.weibo.fragmentmainactivity.StatusListFragment;
+import com.weibo.fragment.StatusListViewActivity;
+import com.weibo.fragment.LeftMenuFragment;
+import com.weibo.fragment.StatusRecyclerViewFragment;
 import com.weibo.sql.DataHelper;
 import com.weibo.tools.AccessTokenKeeper;
 import com.weibo.tools.MyApplication;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,7 +25,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -35,11 +32,11 @@ import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity{
 
-	private ViewPager mViewPager;
-	public AndroidTitleBar mAndroidTitleBar;
+	private ViewPager vpFragments;
+	public AndroidTitleBar atbTitleBar;
 	private Oauth2AccessToken mAccessToken;
-	private DrawerLayout mDrawerLayout;
-	private HideTitleBarLayout mHideTitleBarLayout;
+	private DrawerLayout dlDrawer;
+	private HideTitleBarLayout htblHideTitleBar;
 	
 	private boolean isExit;
 	
@@ -71,75 +68,74 @@ public class MainActivity extends FragmentActivity{
 			View view = findViewById(R.id.v_status_background);
 			view.setBackgroundColor(MyApplication.mThemeColor);
 			System.out.println(Environment.getExternalStorageDirectory().getPath());
-			mAndroidTitleBar = (AndroidTitleBar) findViewById(R.id.titlebar);
-			mAndroidTitleBar.setTitleColor(MyApplication.mTitleColor);
-			mAndroidTitleBar.setTitle(user.screen_name);
-			mAndroidTitleBar.setFocusButton(0);
-			//mAndroidTitleBar.bringToFront();
-			mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawerLayout);
-			mViewPager = (ViewPager) findViewById(R.id.pager);
+			atbTitleBar = (AndroidTitleBar) findViewById(R.id.titlebar);
+			atbTitleBar.setTitleColor(MyApplication.mTitleColor);
+			atbTitleBar.setTitle(user.screen_name);
+			atbTitleBar.setFocusButton(0);
+			dlDrawer = (DrawerLayout) findViewById(R.id.dl_drawerLayout);
+			vpFragments = (ViewPager) findViewById(R.id.pager);
 			
 		    MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
-		    mViewPager.setAdapter(myViewPagerAdapter);
-		    mViewPager.setOffscreenPageLimit(2);
+		    vpFragments.setAdapter(myViewPagerAdapter);
+		    vpFragments.setOffscreenPageLimit(2);
 		    
-		    mHideTitleBarLayout = (HideTitleBarLayout) findViewById(R.id.hidetitlelayout);
+		    htblHideTitleBar = (HideTitleBarLayout) findViewById(R.id.hidetitlelayout);
 		    
 		    FragmentManager fragmentManager = getSupportFragmentManager();
 		    fragmentManager.beginTransaction().add(R.id.left_drawer, new LeftMenuFragment(), "left menu").commit();
 		    
-		    mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
-				
+		    vpFragments.setOnPageChangeListener(new OnPageChangeListener() {
+
 				@Override
 				public void onPageSelected(int arg0) {
 					// TODO Auto-generated method stub
 					System.out.println("mHideTitleLayout.setTitleBar()");
-					mAndroidTitleBar.setFocusButton(arg0);
-					
-					
+					atbTitleBar.setFocusButton(arg0);
+
+
 				}
-				
+
 				@Override
 				public void onPageScrolled(int position, float arg1, int positionOffsetPixels) {
 					// TODO Auto-generated method stub
-			
+
 				}
-				
+
 				@Override
 				public void onPageScrollStateChanged(int state) {
 					System.out.println("onPageScrollStateChanged");
 					MyApplication.mCanHide = false;
-					mHideTitleBarLayout.showTitleBar();
-					
+					htblHideTitleBar.showTitleBar();
+
 				}
 			});
 		    
 		    
-		    mAndroidTitleBar.setOnClickButtonListener(new OnClickButtonListener() {
-				
+		    atbTitleBar.setOnClickButtonListener(new OnClickButtonListener() {
+
 				@Override
 				public void buttonCLick(View v, int index) {
 					// TODO Auto-generated method stub
 					switch (index) {
-					case 0:
-						mViewPager.setCurrentItem(0, true);
-						break;
-					case 1:
-						mViewPager.setCurrentItem(1, true);
-						break;
-				    case 2:
-				    	mViewPager.setCurrentItem(2, true);
-				    	break;
-				    case 3:
-				    	mDrawerLayout.openDrawer(Gravity.LEFT);
-				    	break;
-					case 4:
-						Intent intent = new Intent();
-						intent.setClass(MainActivity.this, UserPageActivity.class);
-						startActivity(intent);
-						break;
-					default:
-						break;
+						case 0:
+							vpFragments.setCurrentItem(0, true);
+							break;
+						case 1:
+							vpFragments.setCurrentItem(1, true);
+							break;
+						case 2:
+							vpFragments.setCurrentItem(2, true);
+							break;
+						case 3:
+							dlDrawer.openDrawer(Gravity.LEFT);
+							break;
+						case 4:
+							Intent intent = new Intent();
+							intent.setClass(MainActivity.this, UserPageActivity.class);
+							startActivity(intent);
+							break;
+						default:
+							break;
 					}
 				}
 			});
@@ -158,13 +154,11 @@ public class MainActivity extends FragmentActivity{
 			// TODO Auto-generated method stub
 			switch (arg0) {
 			case 0:
-				return StatusListFragment.newInstance(StatusListFragment.HOME, null);
-				//return FragmentHomeActivity.newInstance(FragmentHomeActivity.HOME, null);
+				return StatusRecyclerViewFragment.newInstance(StatusRecyclerViewFragment.HOME, null);
             case 1:
-            	return StatusListFragment.newInstance(StatusListFragment.HOME, null);
-            	//return FragmentHomeActivity.newInstance(FragmentHomeActivity.HOT, null);
+            	return StatusRecyclerViewFragment.newInstance(StatusRecyclerViewFragment.HOME, null);
             default :
-            	return FragmentHomeActivity.newInstance(FragmentHomeActivity.HOT, null);
+            	return StatusListViewActivity.newInstance(StatusListViewActivity.HOT, null);
 			}
 		}
 

@@ -72,6 +72,9 @@ public class Status {
     public int attitudes_count;
     /** 暂未支持 */
     public int mlevel;
+
+    public int widthOfPicture;
+    public int heightOfPictur;
     /**
      * 微博的可见性及指定可见分组信息。该 object 中 type 取值，
      * 0：普通微博，1：私密微博，3：指定分组微博，4：密友微博；

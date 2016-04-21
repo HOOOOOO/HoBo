@@ -47,7 +47,7 @@
         <Button 
             android:layout_width="50dp"
             android:layout_height="fill_parent"
-            android:background="@drawable/white_btn_backgruand"
+            android:background="@drawable/selector_white_btn"
             android:text="搜索"
             android:textColor="@color/setting_text_color"
             android:textSize="15sp"

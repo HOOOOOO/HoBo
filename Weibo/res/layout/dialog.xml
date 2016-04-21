@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_backgruand">
+    android:background="@drawable/shape_dialog_backgruand">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -52,7 +52,7 @@
         
         <Button
             android:id="@+id/positiveButton"
-            android:background="@drawable/white_btn_backgruand"
+            android:background="@drawable/selector_white_btn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -73,7 +73,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/dialog_choose_backgruand"
+            android:background="@drawable/selector_dialog_choose"
             android:singleLine="true"
             android:text="编辑转发"
             android:textColor="@color/setting_text_color"

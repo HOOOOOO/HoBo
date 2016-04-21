@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:textSize="17sp"
-        android:background="@drawable/white_btn_backgruand"
+        android:background="@drawable/selector_white_btn"
         android:text="授权登陆" 
         android:visibility="visible"
         android:textColor="@color/weibo_text_color"/>

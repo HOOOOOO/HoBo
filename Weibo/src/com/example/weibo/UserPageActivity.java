@@ -2,8 +2,8 @@ package com.example.weibo;
 
 import com.example.view.SwipeBackLayout;
 import com.sina.weibo.sdk.openapi.models.User;
-import com.weibo.fragmentmainactivity.StatusListFragment;
-import com.weibo.fragmentmainactivity.StatusListFragment.OnStatusFragmentListener;
+import com.weibo.fragment.StatusRecyclerViewFragment;
+import com.weibo.fragment.StatusRecyclerViewFragment.OnStatusFragmentListener;
 import com.weibo.tools.MyApplication;
 
 import android.os.Bundle;
@@ -54,7 +54,7 @@ public class UserPageActivity extends FragmentActivity{
 		//mTextView.setAlpha(0);
 		mTitle.setVisibility(View.INVISIBLE);
 		
-		StatusListFragment fragmentHomeActivity = StatusListFragment.newInstance(StatusListFragment.USER, screen_name);
+		StatusRecyclerViewFragment fragmentHomeActivity = StatusRecyclerViewFragment.newInstance(StatusRecyclerViewFragment.USER, screen_name);
 		fragmentHomeActivity.setStatusListener(new OnStatusFragmentListener() {
 
 			@Override

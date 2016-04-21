@@ -35,6 +35,7 @@ public class MyApplication extends Application {
 	public static int mWidthOfScreen;
 	public static int mHeightOfScreen;
 	public static float mRate;
+	public static int mWidthOfWeiboLayout;
 	
 	public static boolean mCanHide = false;
 	
@@ -63,6 +64,7 @@ public class MyApplication extends Application {
 		ScreenTools screenTools = ScreenTools.instance(this);
 		mWidthOfScreen = screenTools.getScreenWidth();
 		mHeightOfScreen = screenTools.getScreenHeight()-screenTools.dip2px(25);
+		mWidthOfWeiboLayout = screenTools.getScreenWidth() - screenTools.dip2px(16);
 		mRate = (float)mHeightOfScreen/mWidthOfScreen;
 		
 	}

@@ -65,7 +65,7 @@
         <item name="android:paddingTop">10dip</item>
         <item name="android:paddingBottom">10dip</item>
         <item name="android:textColor">#cccccc</item>
-        <item name="android:background">@drawable/white_btn_backgruand</item>
+        <item name="android:background">@drawable/selector_white_btn</item>
         <item name="android:textSize">17sp</item>
     </style>
     
@@ -102,7 +102,7 @@
         <item name="android:gravity">center</item>
         <item name="android:paddingRight">4dp</item>
         <item name="android:paddingLeft">4dp</item>
-        <item name="android:background">@drawable/white_btn_backgruand</item>
+        <item name="android:background">@drawable/selector_white_btn</item>
     </style>
     
     <style name="weibo_btn_text_style">

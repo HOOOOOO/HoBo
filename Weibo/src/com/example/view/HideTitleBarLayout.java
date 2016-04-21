@@ -1,7 +1,6 @@
 package com.example.view;
 
-import com.android.style.AndroidTitleBar;
-import com.android.style.AndroidTitleBar.OnTitleBarClickListener;
+import com.example.view.AndroidTitleBar.OnTitleBarClickListener;
 import com.example.weibo.R;
 import com.weibo.tools.MyApplication;
 import com.weibo.tools.ScreenTools;
@@ -9,17 +8,11 @@ import com.weibo.tools.ScreenTools;
 import android.content.Context;
 import android.graphics.Paint;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 

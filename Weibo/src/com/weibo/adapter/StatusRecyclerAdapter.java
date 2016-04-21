@@ -1,7 +1,6 @@
 package com.weibo.adapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.example.view.CustomImageView;
 import com.example.view.Image;
@@ -9,24 +8,18 @@ import com.example.view.NineGridlayout;
 import com.example.view.RoundImageView;
 import com.example.view.WeiboTextView;
 import com.example.weibo.R;
-import com.example.weibo.UserPageActivity;
 import com.sina.weibo.sdk.openapi.models.Status;
-import com.sina.weibo.sdk.openapi.models.User;
 import com.squareup.picasso.Picasso;
-import com.weibo.fragmentmainactivity.StatusListFragment;
+import com.weibo.fragment.StatusRecyclerViewFragment;
 import com.weibo.tools.GetImageWidthAndHeigth;
 import com.weibo.tools.MyApplication;
 import com.weibo.tools.ScreenTools;
 import com.weibo.tools.Tools;
 
-import android.app.LauncherActivity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,10 +28,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-public class RecyclerAdapter extends RecyclerView.Adapter{
+public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 	
 	private static int USERHEAD = 0;
 	private static int NORMALHEAD = 1;
@@ -57,7 +49,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 	private OnItemViewClickListener mItemViewClickListener;
 	private String mTag;
 	
-	public RecyclerAdapter(Context context, ArrayList<Status> statuses, String tag) {
+	public StatusRecyclerAdapter(Context context, ArrayList<Status> statuses, String tag) {
 		// TODO Auto-generated constructor stub
 		this.mContext = context;
 		this.mStatuses = statuses;
@@ -67,7 +59,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 	@Override
 	public int getItemCount() {
 		// TODO Auto-generated method stub
-		if(mStatuses.size() < 3 && mTag != StatusListFragment.USER)
+		if(mStatuses.size() < 3 && mTag != StatusRecyclerViewFragment.USER)
 			return 0;
 		return mStatuses.size();
 	}
@@ -76,9 +68,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 	public void onBindViewHolder(ViewHolder viewHolder, int position) {
 		// TODO Auto-generated method stub
 		try {
-			
 			//System.out.println("onBindViewHolder "+position);
-			if(position == 0 && mTag == StatusListFragment.USER){
+			if(position == 0 && mTag == StatusRecyclerViewFragment.USER){
 				if(mStatuses.get(position) != null){
 					if(mStatuses.get(position).user != null){
 						HeadViewHolder headViewHolder = (HeadViewHolder) viewHolder;
@@ -94,7 +85,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 				return;
 			}
 			
-			if(position == 0 && mTag != StatusListFragment.USER){
+			if(position == 0 && mTag != StatusRecyclerViewFragment.USER){
 				FootViewHolder footViewHolder = (FootViewHolder) viewHolder;
 				footViewHolder.btnFoot.setVisibility(View.INVISIBLE);
 				return;
@@ -266,44 +257,54 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 	
 	private void handlerOneImage(final WeiboLayoutHolder viewHolder, final ArrayList<Image> images, final Boolean isRetweet, final int position) {
         int imageWidth;
-        int imageHeight;
-        ScreenTools screentools = ScreenTools.instance(mContext);
-        final int totalWidth = screentools.getScreenWidth() - screentools.dip2px(16);
-        GetImageWidthAndHeigth getImageWidthAndHeigth = new GetImageWidthAndHeigth(){
-        	@Override
-        	protected void onPostExecute(int[] result) {
-        		// TODO Auto-generated method stub
-        		if(result != null){
-        			int totalHeight = (int) (totalWidth*((float)result[2]/result[1]));
-        			if(totalHeight > totalWidth*MyApplication.mRate)
-        				totalHeight = (int) (totalWidth*MyApplication.mRate);
-        			System.out.println("viewHolder.cimgOne.getLayoutParams().getClass():"+viewHolder.cimgOne.getLayoutParams().getClass());
-        			RelativeLayout.LayoutParams layoutparams = (RelativeLayout.LayoutParams) viewHolder.cimgOne.getLayoutParams();
-        			layoutparams.height = totalHeight;
-        			layoutparams.width = totalWidth;
-        			if(!isRetweet){
-        				viewHolder.cimgOne.setTag(String.valueOf(position)+"0");
-        				viewHolder.cimgOne.setLayoutParams(layoutparams);
-        				viewHolder.cimgOne.setClickable(true);
-        				viewHolder.cimgOne.setImageBitmap(null);
-        				//List<Image> imageList = new ArrayList<Image>();
-        				//imageList.add(image);
-        				viewHolder.cimgOne.setImageUrl(images.get(0).getUrl(), images, 0);
-        			}
-        			else{
-        				viewHolder.cimgRetweetOne.setTag(String.valueOf(position)+"0");
-        				viewHolder.cimgRetweetOne.setLayoutParams(layoutparams);
-        				viewHolder.cimgRetweetOne.setClickable(true);
-        				viewHolder.cimgRetweetOne.setImageBitmap(null);
-        				//List<Image> imageList = new ArrayList<Image>();
-        				//imageList.add(image);
-        				viewHolder.cimgRetweetOne.setImageUrl(images.get(0).getUrl(), images, 0);
-        			}
-        		}
-        	}
-        };
-        getImageWidthAndHeigth.execute(images.get(0).getUrl(), "0");
+        final int imageHeight;
+
+		if(mStatuses.get(position).widthOfPicture > 0){
+			setImageViewSize(viewHolder, mStatuses.get(position).heightOfPictur,
+					mStatuses.get(position).widthOfPicture, isRetweet, images);
+
+		}else {
+			GetImageWidthAndHeigth getImageWidthAndHeigth = new GetImageWidthAndHeigth() {
+				@Override
+				protected void onPostExecute(int[] result) {
+					int totalWidth = MyApplication.mWidthOfWeiboLayout;
+					// TODO Auto-generated method stub
+					if (result != null) {
+						int totalHeight = (int) (totalWidth * ((float) result[2] / result[1]));
+						if (totalHeight > totalWidth * MyApplication.mRate)
+							totalHeight = (int) (totalWidth * MyApplication.mRate);
+						mStatuses.get(position).widthOfPicture = totalWidth;
+						mStatuses.get(position).heightOfPictur = totalHeight;
+						setImageViewSize(viewHolder, totalHeight, totalWidth, isRetweet, images);
+					}else{
+						setImageViewSize(viewHolder, totalWidth, totalWidth, isRetweet, images);
+					}
+				}
+			};
+			getImageWidthAndHeigth.execute(images.get(0).getUrl(), "0");
+		}
     }
+
+	private void setImageViewSize(WeiboLayoutHolder viewHolder, int totalHeight, int totalWidth, boolean isRetweet, ArrayList<Image> images){
+		RelativeLayout.LayoutParams layoutparams = (RelativeLayout.LayoutParams) viewHolder.cimgOne.getLayoutParams();
+		layoutparams.height = totalHeight;
+		layoutparams.width = totalWidth;
+		if (!isRetweet) {
+			viewHolder.cimgOne.setLayoutParams(layoutparams);
+			viewHolder.cimgOne.setClickable(true);
+			viewHolder.cimgOne.setImageBitmap(null);
+			//List<Image> imageList = new ArrayList<Image>();
+			//imageList.add(image);
+			viewHolder.cimgOne.setImageUrl(images.get(0).getUrl(), images, 0);
+		} else {
+			viewHolder.cimgRetweetOne.setLayoutParams(layoutparams);
+			viewHolder.cimgRetweetOne.setClickable(true);
+			viewHolder.cimgRetweetOne.setImageBitmap(null);
+			//List<Image> imageList = new ArrayList<Image>();
+			//imageList.add(image);
+			viewHolder.cimgRetweetOne.setImageUrl(images.get(0).getUrl(), images, 0);
+		}
+	}
 
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup arg0, int viewType) {
@@ -345,9 +346,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter{
 	@Override
 	public int getItemViewType(int position) {
 		// TODO Auto-generated method stub
-		if(position == 0 && mTag == StatusListFragment.USER)
+		if(position == 0 && mTag == StatusRecyclerViewFragment.USER)
 			return USERHEAD;
-		else if(position == 0 && mTag != StatusListFragment.USER)
+		else if(position == 0 && mTag != StatusRecyclerViewFragment.USER)
 			return NORMALHEAD;
 		else if(position == mStatuses.size()-1)
 			return FOOT;
