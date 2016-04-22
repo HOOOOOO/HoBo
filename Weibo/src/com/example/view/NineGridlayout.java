@@ -2,7 +2,6 @@ package com.example.view;
 
 import java.util.List;
 
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.weibo.tools.GetImageWidthAndHeigth;
 import com.weibo.tools.ScreenTools;
 

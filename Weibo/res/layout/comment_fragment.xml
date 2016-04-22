@@ -24,7 +24,7 @@
         	android:layout_height="wrap_content"
         	android:divider="#50cccccc"
         	android:dividerHeight="0.1dp"
-        	android:background="@drawable/shape_rounded_rectangle"></ListView>
+        	android:background="@drawable/shape_dialog_backgruand"></ListView>
     
     </android.support.v4.widget.SwipeRefreshLayout>
     <LinearLayout 
@@ -32,7 +32,7 @@
         android:layout_height="55dp"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
-        android:background="@drawable/shape_rounded_rectangle">
+        android:background="@drawable/shape_dialog_backgruand">
         <EditText 
             android:id="@+id/ed_sendcomment"
             android:cursorVisible="false"

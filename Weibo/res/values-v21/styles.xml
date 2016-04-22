@@ -5,10 +5,7 @@
         AppBaseTheme from BOTH res/values/styles.xml and
         res/values-v11/styles.xml on API 21+ devices.
     -->
-    <style name="AppBaseTheme" parent="@android:style/Theme.Material.Light">
-        <item name="android:windowNoTitle">true</item>
-        
-        <item name="android:windowTranslucentStatus">true</item>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- API 21 theme customizations can go here. -->
     </style>
     
@@ -16,12 +13,18 @@
         <item name="android:windowNoTitle">true</item>
     </style>
     
-    <style name="MyTransparent" parent="Theme.AppCompat.Light.DarkActionBar">  
-    	<item name="android:windowBackground">@color/tran</item>  
-    	<item name="android:windowNoTitle">true</item>  
-    	<item name="android:windowIsTranslucent">true</item> 
+    <style name="DefaultTranslucent" parent="Theme.AppCompat.NoActionBar">
+    	<item name="android:windowBackground">@color/tran</item>
+    	<item name="android:windowNoTitle">true</item>
+    	<item name="android:windowIsTranslucent">true</item>
     	<item name="android:windowTranslucentStatus">true</item>
     	<!--  <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> -->
-	</style>  
+	</style>>
+    <style name="AppBaseTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>  
 
 </resources>

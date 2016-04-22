@@ -87,6 +87,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			
 			if(position == 0 && mTag != StatusRecyclerViewFragment.USER){
 				FootViewHolder footViewHolder = (FootViewHolder) viewHolder;
+
 				footViewHolder.btnFoot.setVisibility(View.INVISIBLE);
 				return;
 			}
@@ -329,7 +330,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			else
 				footView = LayoutInflater.from(mContext).inflate(R.layout.status_list_foot, null);
 			footView.setTag("headView");
-			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, MyApplication.mHeightOfPadding);
 	        footView.setLayoutParams(lp);
 	        return new FootViewHolder(footView);
 		}

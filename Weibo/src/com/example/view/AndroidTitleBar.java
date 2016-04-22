@@ -24,6 +24,7 @@ public class AndroidTitleBar extends RelativeLayout implements View.OnClickListe
 	private int mHeight;
 	private OnTitleBarClickListener mBarClickListener;
 	private TextView mTitle;
+
 	
 	public AndroidTitleBar(Context context) {
 		this(context, null);
@@ -46,6 +47,7 @@ public class AndroidTitleBar extends RelativeLayout implements View.OnClickListe
 		left_btn = (ImageButton) findViewById(R.id.left_btn);
 		right_btn = (ImageButton) findViewById(R.id.right_btn);
 		me_btn = (ImageButton) findViewById(R.id.btn_search);
+
 		
 		slide_btn.setOnClickListener(this);
 		left_btn.setOnClickListener(this);
@@ -129,7 +131,6 @@ public class AndroidTitleBar extends RelativeLayout implements View.OnClickListe
 		default:
 			break;
 		}
-		
 	}
 	
 	public void setButtonAphla(int from, int to, float arg) {

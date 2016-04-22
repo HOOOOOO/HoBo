@@ -15,8 +15,9 @@ tasks.withType(JavaCompile) {
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
     compile project(':WeiboSDK')
-    compile project(':v7:appcompat')
     compile fileTree(dir: "$buildDir/native-libs", include: 'native-libs.jar')
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
 }
 
 android {
@@ -52,5 +53,10 @@ android {
         release.setRoot('build-types/release')
     }
 }
+
+
+
+
+
 
 

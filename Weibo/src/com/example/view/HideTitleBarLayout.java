@@ -47,6 +47,8 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 	private boolean mShowColorTable = false;
 	private ViewPager mViewPager;
 
+	private FabScrollLayout fabslScroll;
+
 	public HideTitleBarLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		ScreenTools screenTools = ScreenTools.instance(context);
@@ -64,6 +66,7 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 		// TODO Auto-generated method stub
 		super.onFinishInflate();
 		mTitleBar = (AndroidTitleBar) findViewById(R.id.titlebar);
+		fabslScroll = (FabScrollLayout) findViewById(R.id.fabsl_sroll);
 		mTitleBar.bringToFront();
 		mTitleBar.setBarClickListener(new OnTitleBarClickListener() {
 			
@@ -157,6 +160,7 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 						//System.out.println("tmpReclView.getChildAt(1).getTag()"+tmpReclView.getChildAt(1).getTag());
 					if(MyApplication.mCanHide){	
 						mTitleBar.hide();
+						fabslScroll.hideFab();
 						isHide  = true;
 					}
 					//}
@@ -164,11 +168,13 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 				}
 				if(ev.getY() > mLastY+10 && isHide){
 					mTitleBar.show();
+					fabslScroll.showFab();
 					isHide=false;
 					//System.out.println(ev.getY()+" "+mLastY);
 				}
 				if(ev.getY() - mInterInitY > 10 && isHide){
 					mTitleBar.show();
+					fabslScroll.showFab();
 					isHide=false;
 					//System.out.println(ev.getY()+" "+mInterInitY);
 				}
@@ -186,6 +192,7 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 			}
 			if(ev.getY() - mInterInitY > 10 && isHide){
 				mTitleBar.show();
+				fabslScroll.showFab();
 				isHide=false;
 				//System.out.println(ev.getY()+" "+mInterInitY);
 			}
@@ -238,11 +245,13 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 		if(getScaleY() == 0){
 			if(velocityY < -1000){
 				mTitleBar.hide();
+				fabslScroll.hideFab();
 				//System.out.println("hide"+velocityY);
 				isHide=true;
 			}
 			if(velocityY > 1000){
 				mTitleBar.show();
+				fabslScroll.showFab();
 				//System.out.println("show"+velocityY);
 				isHide=false;
 			}
@@ -277,6 +286,6 @@ public class HideTitleBarLayout extends RelativeLayout implements OnGestureListe
 	public void showTitleBar() {
 		isHide = false;
 		mTitleBar.show();
-		
+		fabslScroll.showFab();
 	}
 }

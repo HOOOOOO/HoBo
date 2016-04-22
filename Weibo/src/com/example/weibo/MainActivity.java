@@ -3,6 +3,7 @@ package com.example.weibo;
 import com.example.view.AndroidTitleBar;
 import com.example.view.AndroidTitleBar.OnClickButtonListener;
 import com.example.view.HideTitleBarLayout;
+import com.example.view.Image;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.User;
 import com.weibo.fragment.StatusListViewActivity;
@@ -14,10 +15,13 @@ import com.weibo.tools.MyApplication;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -25,12 +29,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends AppCompatActivity{
 
 	private ViewPager vpFragments;
 	public AndroidTitleBar atbTitleBar;
@@ -46,11 +52,6 @@ public class MainActivity extends FragmentActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getWindow().setBackgroundDrawable(new ColorDrawable(MyApplication.mThemeColor));
-		if(MyApplication.mThemeColor == getResources().getColor(R.color.colorThemeWhite1))
-			getWindow().setStatusBarColor(getResources().getColor(R.color.colorTitle1));
-		else
-			getWindow().setStatusBarColor(MyApplication.mThemeColor);
 		mAccessToken = AccessTokenKeeper.readAccessToken(this);
 		if (!mAccessToken.isSessionValid()) {
 			Intent intent = new Intent();
@@ -58,6 +59,7 @@ public class MainActivity extends FragmentActivity{
         	startActivity(intent);
             finish();
 		}else{
+			getWindow().setBackgroundDrawable(new ColorDrawable(MyApplication.mThemeColor));
 			DataHelper dataHelper = new DataHelper(getApplicationContext());
 			User user = dataHelper.getUserByUid(mAccessToken.getUid());
 			if(MyApplication.mIsNightMode)
@@ -68,12 +70,16 @@ public class MainActivity extends FragmentActivity{
 			View view = findViewById(R.id.v_status_background);
 			view.setBackgroundColor(MyApplication.mThemeColor);
 			System.out.println(Environment.getExternalStorageDirectory().getPath());
+
 			atbTitleBar = (AndroidTitleBar) findViewById(R.id.titlebar);
 			atbTitleBar.setTitleColor(MyApplication.mTitleColor);
 			atbTitleBar.setTitle(user.screen_name);
 			atbTitleBar.setFocusButton(0);
 			dlDrawer = (DrawerLayout) findViewById(R.id.dl_drawerLayout);
 			vpFragments = (ViewPager) findViewById(R.id.pager);
+
+			((ImageView)findViewById(R.id.iv_fab_background)).setColorFilter(MyApplication.mThemeColor);
+			((ImageView)findViewById(R.id.iv_fab_icon)).setColorFilter(MyApplication.mTitleColor);
 			
 		    MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
 		    vpFragments.setAdapter(myViewPagerAdapter);
@@ -91,8 +97,6 @@ public class MainActivity extends FragmentActivity{
 					// TODO Auto-generated method stub
 					System.out.println("mHideTitleLayout.setTitleBar()");
 					atbTitleBar.setFocusButton(arg0);
-
-
 				}
 
 				@Override
