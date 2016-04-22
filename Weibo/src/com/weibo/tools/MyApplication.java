@@ -1,10 +1,6 @@
 package com.weibo.tools;
 
 import com.example.weibo.R;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.sina.weibo.sdk.openapi.models.User;
 
 import android.app.Application;
@@ -36,11 +32,13 @@ public class MyApplication extends Application {
 	public static int mHeightOfScreen;
 	public static float mRate;
 	public static int mWidthOfWeiboLayout;
+	public static  int mHeightOfPadding;
 	
 	public static boolean mCanHide = false;
 	
 	public static boolean mIsNightMode = true;
-	
+
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -65,6 +63,7 @@ public class MyApplication extends Application {
 		mWidthOfScreen = screenTools.getScreenWidth();
 		mHeightOfScreen = screenTools.getScreenHeight()-screenTools.dip2px(25);
 		mWidthOfWeiboLayout = screenTools.getScreenWidth() - screenTools.dip2px(16);
+		mHeightOfPadding = screenTools.dip2px(56+10);
 		mRate = (float)mHeightOfScreen/mWidthOfScreen;
 		
 	}

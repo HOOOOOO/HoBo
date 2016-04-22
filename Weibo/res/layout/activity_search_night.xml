@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.view.SwipeBackLayout android:id="@+id/swpb_search" android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="#80000000" xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:id="@+id/ll_searchBackground" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical">
+        <LinearLayout android:id="@+id/ll_postBackground" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical">
             <View android:id="@+id/v_statusview" android:layout_width="fill_parent" android:layout_height="25dp" android:background="@android:color/transparent" />
             <include layout="@layout/simple_title" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <RelativeLayout android:id="@+id/rl_contain" android:layout_width="fill_parent" android:layout_height="wrap_content"></RelativeLayout>

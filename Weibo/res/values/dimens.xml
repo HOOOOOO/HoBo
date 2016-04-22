@@ -8,6 +8,7 @@
     
     <dimen name="height_titlebar">56dp</dimen>
     <dimen name="height_titlebar_shadow">2dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
     
 
 </resources>

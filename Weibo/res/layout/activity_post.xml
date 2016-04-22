@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.view.SwipeBackLayout
+    android:id="@+id/swpb_search"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#80000000"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/ll_postBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/v_statusview"
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:background="@android:color/transparent"/>
+
+        <include
+            layout="@layout/simple_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_rectangle"
+            android:layout_weight="1"
+            android:layout_margin="8dp">
+            <EditText
+                android:textSize="15sp"
+                android:textColor="@color/colorWeiboText1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"/>
+        </RelativeLayout>
+
+        <Button
+            android:text="发送"
+            android:textSize="15sp"
+            android:textColor="@color/colorWeiboText1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_rounded_rectangle"/>
+    </LinearLayout>
+</com.example.view.SwipeBackLayout>

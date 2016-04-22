@@ -7,7 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     
     <LinearLayout
-    	android:id="@+id/ll_searchBackground"
+    	android:id="@+id/ll_postBackground"
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
 		xmlns:android="http://schemas.android.com/apk/res/android"

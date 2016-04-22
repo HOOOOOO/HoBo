@@ -29,5 +29,26 @@
         >   
     </com.example.view.ColorLayout>
 
+    <com.example.view.CustomFloatingButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <com.example.view.FabScrollLayout
+        android:id="@+id/fabsl_sroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/view_custom_floating_button"
+            android:layout_margin="16dp"/>
+    </com.example.view.FabScrollLayout>
+
+
+
 </com.example.view.HideTitleBarLayout>
 </RelativeLayout>

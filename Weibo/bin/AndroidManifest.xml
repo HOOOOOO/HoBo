@@ -141,12 +141,12 @@
         <activity
             android:name=".UserPageActivity"
             android:label="@string/title_activity_user_page"
-            android:theme="@style/MyTransparent" >
+            android:theme="@style/DefaultTranslucent" >
         </activity>
         <activity
             android:name=".ChangeUserActivity"
             android:label="@string/title_activity_change_user"
-            android:theme="@style/MyTransparent" >
+            android:theme="@style/DefaultTranslucent" >
         </activity>
         <activity
             android:name=".FirstLoginActivity"
@@ -155,12 +155,12 @@
         <activity
             android:name=".FavoriteActivity"
             android:label="@string/title_activity_favorite"
-            android:theme="@style/MyTransparent" >
+            android:theme="@style/DefaultTranslucent" >
         </activity>
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search" 
-            android:theme="@style/MyTransparent">
+            android:theme="@style/DefaultTranslucent">
         </activity>
     </application>
 
