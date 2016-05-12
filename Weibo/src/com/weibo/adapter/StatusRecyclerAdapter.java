@@ -88,6 +88,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			
 			if(position == 0 && mTag != StatusRecyclerViewFragment.USER){
 				FootViewHolder footViewHolder = (FootViewHolder) viewHolder;
+
 				footViewHolder.btnFoot.setVisibility(View.INVISIBLE);
 				return;
 			}
