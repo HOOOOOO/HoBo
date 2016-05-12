@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.weibo.fragment.CustomDialogFragment;
 import com.weibo.fragment.CustomDialogFragment.DialogClickListener;
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 import com.example.view.SwipeBackLayout;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -214,7 +214,7 @@ public class ChangeUserActivity extends FragmentActivity {
 			if(convertView == null) {
 				usersListItemHolder = new UsersListItemHolder();
 				convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.change_user_item, parent, false);
-	            usersListItemHolder.user_icon = (RoundImageView) convertView.findViewById(R.id.change_user_icon);
+	            usersListItemHolder.user_icon = (CircleImageView) convertView.findViewById(R.id.change_user_icon);
 	            usersListItemHolder.user_name = (TextView) convertView.findViewById(R.id.change_user_name);
 	            convertView.setTag(usersListItemHolder);
 			}
@@ -234,7 +234,7 @@ public class ChangeUserActivity extends FragmentActivity {
 	}
 	
 	class UsersListItemHolder {
-		public RoundImageView user_icon;
+		public CircleImageView user_icon;
 		public TextView user_name; 
 	}
 	

@@ -1,7 +1,5 @@
 package com.weibo.tools;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.SoftReference;
@@ -9,7 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -24,7 +22,7 @@ public class AsyncImageLoader {
 	}
 
 	public Drawable loadDrawable(final String imageUrl,
-			final RoundImageView imageView, final ImageCallback imageCallback) {
+			final CircleImageView imageView, final ImageCallback imageCallback) {
 		if (imageCache.containsKey(imageUrl)) {
 			// 从缓存中获取
 			SoftReference<Drawable> softReference = imageCache.get(imageUrl);
@@ -70,7 +68,7 @@ public class AsyncImageLoader {
 
 	// 回调接口
 	public interface ImageCallback {
-		public void imageLoaded(Drawable imageDrawable, RoundImageView imageView,
+		public void imageLoaded(Drawable imageDrawable, CircleImageView imageView,
 				String imageUrl);
 	}
 }

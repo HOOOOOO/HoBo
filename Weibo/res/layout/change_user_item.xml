@@ -11,7 +11,7 @@
         android:orientation="horizontal" 
         android:gravity="center_vertical">
         
-        <com.example.view.RoundImageView 
+        <com.example.view.CircleImageView
             android:id="@+id/change_user_icon"
             android:layout_width="40dip"
             android:layout_height="40dip"

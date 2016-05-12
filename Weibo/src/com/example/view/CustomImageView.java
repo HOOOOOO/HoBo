@@ -101,24 +101,25 @@ public class CustomImageView extends ImageView {
             listData = imageList;
             if (isAttachedToWindow) {
             	this.setOnClickListener(new OnClickListener() {
-    				@Override
-    				public void onClick(View v) {
-    					// TODO Auto-generated method stub
-    					Intent intent = new Intent();
-        				intent.setClass(getContext(), ImagePagerActivity.class);
-        				ArrayList<String> urls = new ArrayList<String>();
-        				for(int k = 0; k < listData.size(); k++){
-        					urls.add(listData.get(k).getUrl());
-        				}
-        				intent.putStringArrayListExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls);
-        				intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, mPositive);
-        				//Toast.makeText(getContext(), String.valueOf(mPositive), Toast.LENGTH_LONG).show();;
-        				getContext().startActivity(intent); 
-    				}
-    			});
-            	
-            	//loadImage(listData.size() == 1);
-            	loadImage(true);
+                    @Override
+                    public void onClick(View v) {
+                        // TODO Auto-generated method stub
+                        Intent intent = new Intent();
+                        intent.setClass(getContext(), ImagePagerActivity.class);
+                        ArrayList<String> urls = new ArrayList<String>();
+                        for (int k = 0; k < listData.size(); k++) {
+                            urls.add(listData.get(k).getUrl());
+                        }
+                        intent.putStringArrayListExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls);
+                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, mPositive);
+                        //Toast.makeText(getContext(), String.valueOf(mPositive), Toast.LENGTH_LONG).show();;
+                        getContext().startActivity(intent);
+                    }
+                });
+
+                if(MyApplication.mShouldLoadPicture)
+            	    loadImage(listData.size() == 1 || !MyApplication.mShowNinePicture);
+            	//loadImage(true);
             }
         }
     }

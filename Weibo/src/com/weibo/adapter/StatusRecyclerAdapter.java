@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.example.view.CustomImageView;
 import com.example.view.Image;
 import com.example.view.NineGridlayout;
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 import com.example.view.WeiboTextView;
 import com.example.weibo.R;
 import com.sina.weibo.sdk.openapi.models.Status;
@@ -13,11 +13,11 @@ import com.squareup.picasso.Picasso;
 import com.weibo.fragment.StatusRecyclerViewFragment;
 import com.weibo.tools.GetImageWidthAndHeigth;
 import com.weibo.tools.MyApplication;
-import com.weibo.tools.ScreenTools;
 import com.weibo.tools.Tools;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -66,6 +66,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 
 	@Override
 	public void onBindViewHolder(ViewHolder viewHolder, int position) {
+		System.out.println("onBindViewHolder：" + position);
 		// TODO Auto-generated method stub
 		try {
 			//System.out.println("onBindViewHolder "+position);
@@ -87,7 +88,6 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			
 			if(position == 0 && mTag != StatusRecyclerViewFragment.USER){
 				FootViewHolder footViewHolder = (FootViewHolder) viewHolder;
-
 				footViewHolder.btnFoot.setVisibility(View.INVISIBLE);
 				return;
 			}
@@ -100,6 +100,8 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			}
 			WeiboLayoutHolder weiboLayoutHolder = (WeiboLayoutHolder) viewHolder;
 			Status status = mStatuses.get(position);
+			weiboLayoutHolder.cimgOne.setImageBitmap(null);
+			weiboLayoutHolder.cimgRetweetOne.setImageBitmap(null);
 			if(status.user != null){
 				if(status.user.screen_name != null){
 					weiboLayoutHolder.wtvUserName.setText(status.user.screen_name);
@@ -113,7 +115,10 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 					}
 					//if(status.text.con)
 					weiboLayoutHolder.wtvWeiboText.setText(status.text);
-					Picasso.with(mContext).load(status.user.avatar_large).into(weiboLayoutHolder.rimgUserIcon);
+					weiboLayoutHolder.rimgUserIcon.setTag("user" + String.valueOf(position));
+					weiboLayoutHolder.rimgUserIcon.setImageBitmap(null );
+					if(MyApplication.mShouldLoadPicture)
+						Picasso.with(mContext).load(status.user.avatar_large).into(weiboLayoutHolder.rimgUserIcon);
 					
 					//设置转发评论点赞数
 					if(status.reposts_count == 0)
@@ -150,8 +155,8 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 							if (itemList.isEmpty() || itemList.isEmpty()) {
 								weiboLayoutHolder.rlImgOne.setVisibility(View.GONE);
 					            weiboLayoutHolder.nglMore.setVisibility(View.GONE);
-					            weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
-					        } else{// if (itemList.size() == 1) {
+					            //weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
+					        } else  if (itemList.size() == 1 || !MyApplication.mShowNinePicture) {
 					        	weiboLayoutHolder.rlImgOne.setVisibility(View.VISIBLE);
 					        	if(status.pic_urls.size() > 1){
 					        		weiboLayoutHolder.tvPicsCount.setVisibility(View.VISIBLE);
@@ -160,21 +165,22 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 					        	else
 					        		weiboLayoutHolder.tvPicsCount.setVisibility(View.GONE);
 					        	weiboLayoutHolder.nglMore.setVisibility(View.GONE);
-					            weiboLayoutHolder.cimgOne.setVisibility(View.VISIBLE);
-					            weiboLayoutHolder.cimgOne.setImageBitmap(null);
-					            weiboLayoutHolder.cimgOne.setTag(String.valueOf(position)+"0");
+					            //weiboLayoutHolder.cimgOne.setVisibility(View.VISIBLE);
+					            //weiboLayoutHolder.cimgOne.setImageBitmap(null);
+					            //weiboLayoutHolder.cimgOne.setTag(String.valueOf(position)+"0");
 			                    handlerOneImage(weiboLayoutHolder, itemList,false, position);
-//					        } else {
-//					            weiboLayoutHolder.nglMore.setVisibility(View.VISIBLE);
-//					            weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
-//					            weiboLayoutHolder.nglMore.setImagesData(itemList, position);
+					        } else if(MyApplication.mShowNinePicture && itemList.size() > 1){
+								weiboLayoutHolder.rlImgOne.setVisibility(View.GONE);
+					            weiboLayoutHolder.nglMore.setVisibility(View.VISIBLE);
+					            //weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
+					            weiboLayoutHolder.nglMore.setImagesData(itemList, position);
 					        }
 						}
 						else {
 							 weiboLayoutHolder.rlImgOne.setVisibility(View.GONE);
 							 weiboLayoutHolder.vWeiboTextandPicDivide.setVisibility(View.GONE);
 							 weiboLayoutHolder.nglMore.setVisibility(View.GONE);
-					         weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
+					         //weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
 						}
 					}else{
 			            	//为转发微博
@@ -183,7 +189,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 						weiboLayoutHolder.vWeiboTextDivide.setVisibility(View.VISIBLE);
 						weiboLayoutHolder.llRetweetStatus.setVisibility(View.VISIBLE);
 						weiboLayoutHolder.nglMore.setVisibility(View.GONE);
-			            weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
+			            //weiboLayoutHolder.cimgOne.setVisibility(View.GONE);
 			            weiboLayoutHolder.wtvRetweetWeiboText.setVisibility(View.VISIBLE);
 			            
 						//设置转发微博文本
@@ -199,10 +205,10 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			            					status.retweeted_status.text);
 			            	}
 			            	weiboLayoutHolder.wtvRetweetWeiboText.setText(stringBuilder.toString());
-			            	weiboLayoutHolder.tvRetweetRepostCount.setText("转发:"+status.retweeted_status.reposts_count);
-			            	weiboLayoutHolder.tvRetweetCommentCount.setText("评论:"+status.retweeted_status.comments_count);
-			            	weiboLayoutHolder.tvRetweetAttitudeCount.setText("赞:"+status.retweeted_status.attitudes_count+"  "
-			            			+ Tools.getTagContent(status.retweeted_status.source));
+			            	weiboLayoutHolder.tvRetweetRepostCount.setText("转发:" + status.retweeted_status.reposts_count);
+			            	weiboLayoutHolder.tvRetweetCommentCount.setText("评论:" + status.retweeted_status.comments_count);
+			            	weiboLayoutHolder.tvRetweetAttitudeCount.setText("赞:" + status.retweeted_status.attitudes_count + "  "
+									+ Tools.getTagContent(status.retweeted_status.source));
 			            	//转发的微博是否有图
 			            	if(status.retweeted_status.pic_urls != null){		
 			            		//开始处理图片
@@ -217,9 +223,8 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			            		if (itemList.isEmpty() || itemList.isEmpty()) {
 			            			weiboLayoutHolder.vRetweerWeiboTextAndPicDivide.setVisibility(View.GONE);
 			            			weiboLayoutHolder.nglRetweetMore.setVisibility(View.GONE);
-			            			weiboLayoutHolder.cimgRetweetOne.setVisibility(View.GONE);
 			            			weiboLayoutHolder.rlRetweetImgOne.setVisibility(View.GONE);
-			            		} else{// if (itemList.size() == 1) {
+			            		} else if (itemList.size() == 1 || !MyApplication.mShowNinePicture) {
 			            			weiboLayoutHolder.rlRetweetImgOne.setVisibility(View.VISIBLE);
 			            			if(status.retweeted_status.pic_urls.size() > 1){
 			            				weiboLayoutHolder.tvRetweetPicsCount.setVisibility(View.VISIBLE);
@@ -229,21 +234,17 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			            			}
 			            			weiboLayoutHolder.vRetweerWeiboTextAndPicDivide.setVisibility(View.VISIBLE);
 			            			weiboLayoutHolder.nglRetweetMore.setVisibility(View.GONE);
-			            			weiboLayoutHolder.cimgRetweetOne.setVisibility(View.VISIBLE);
-			            			weiboLayoutHolder.cimgRetweetOne.setImageBitmap(null);
-			            			weiboLayoutHolder.cimgRetweetOne.setTag(String.valueOf(position)+"0");
 			            			handlerOneImage(weiboLayoutHolder, itemList,true, position);
-//			            		} else {
-//			            			weiboLayoutHolder.vRetweerWeiboTextAndPicDivide.setVisibility(View.GONE);
-//			            			weiboLayoutHolder.nglRetweetMore.setVisibility(View.VISIBLE);
-//			            			weiboLayoutHolder.cimgRetweetOne.setVisibility(View.GONE);
-//			            			weiboLayoutHolder.nglRetweetMore.setImagesData(itemList, position);
+			            		} else if(itemList.size() > 1 && MyApplication.mShowNinePicture){
+			            			weiboLayoutHolder.rlRetweetImgOne.setVisibility(View.GONE);
+									weiboLayoutHolder.vRetweerWeiboTextAndPicDivide.setVisibility(View.GONE);
+			            			weiboLayoutHolder.nglRetweetMore.setVisibility(View.VISIBLE);
+			            			weiboLayoutHolder.nglRetweetMore.setImagesData(itemList, position);
 			            		}
 			            	}else{
 			            		weiboLayoutHolder.rlRetweetImgOne.setVisibility(View.GONE);
 			            		weiboLayoutHolder.vRetweerWeiboTextAndPicDivide.setVisibility(View.GONE);
 			            		weiboLayoutHolder.nglRetweetMore.setVisibility(View.GONE);
-			            		weiboLayoutHolder.cimgRetweetOne.setVisibility(View.GONE);
 			            	}
 			            }
 					}
@@ -257,12 +258,9 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 	}
 	
 	private void handlerOneImage(final WeiboLayoutHolder viewHolder, final ArrayList<Image> images, final Boolean isRetweet, final int position) {
-        int imageWidth;
-        final int imageHeight;
-
 		if(mStatuses.get(position).widthOfPicture > 0){
 			setImageViewSize(viewHolder, mStatuses.get(position).heightOfPictur,
-					mStatuses.get(position).widthOfPicture, isRetweet, images);
+					mStatuses.get(position).widthOfPicture, isRetweet, images, position);
 
 		}else {
 			GetImageWidthAndHeigth getImageWidthAndHeigth = new GetImageWidthAndHeigth() {
@@ -276,9 +274,9 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 							totalHeight = (int) (totalWidth * MyApplication.mRate);
 						mStatuses.get(position).widthOfPicture = totalWidth;
 						mStatuses.get(position).heightOfPictur = totalHeight;
-						setImageViewSize(viewHolder, totalHeight, totalWidth, isRetweet, images);
+						setImageViewSize(viewHolder, totalHeight, totalWidth, isRetweet, images, position);
 					}else{
-						setImageViewSize(viewHolder, totalWidth, totalWidth, isRetweet, images);
+						setImageViewSize(viewHolder, totalWidth, totalWidth, isRetweet, images, position);
 					}
 				}
 			};
@@ -286,7 +284,8 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 		}
     }
 
-	private void setImageViewSize(WeiboLayoutHolder viewHolder, int totalHeight, int totalWidth, boolean isRetweet, ArrayList<Image> images){
+	private void setImageViewSize(WeiboLayoutHolder viewHolder, int totalHeight, int totalWidth,
+								  boolean isRetweet, ArrayList<Image> images, int position){
 		RelativeLayout.LayoutParams layoutparams = (RelativeLayout.LayoutParams) viewHolder.cimgOne.getLayoutParams();
 		layoutparams.height = totalHeight;
 		layoutparams.width = totalWidth;
@@ -294,15 +293,13 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			viewHolder.cimgOne.setLayoutParams(layoutparams);
 			viewHolder.cimgOne.setClickable(true);
 			viewHolder.cimgOne.setImageBitmap(null);
-			//List<Image> imageList = new ArrayList<Image>();
-			//imageList.add(image);
+			viewHolder.cimgOne.setTag("pic"+position);
 			viewHolder.cimgOne.setImageUrl(images.get(0).getUrl(), images, 0);
 		} else {
 			viewHolder.cimgRetweetOne.setLayoutParams(layoutparams);
 			viewHolder.cimgRetweetOne.setClickable(true);
 			viewHolder.cimgRetweetOne.setImageBitmap(null);
-			//List<Image> imageList = new ArrayList<Image>();
-			//imageList.add(image);
+			viewHolder.cimgRetweetOne.setTag("pic"+position);
 			viewHolder.cimgRetweetOne.setImageUrl(images.get(0).getUrl(), images, 0);
 		}
 	}
@@ -370,7 +367,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 		public View vWeiboTextDivide, vWeiboTextandPicDivide, vRetweerWeiboTextAndPicDivide;
 		
 		public ImageView imgAttitude, imgAvatarVip, imgMoreChoice;
-		public RoundImageView rimgUserIcon; 
+		public CircleImageView rimgUserIcon;
 		public CustomImageView cimgOne, cimgRetweetOne;
         
 		public WeiboTextView wtvWeiboText, wtvRetweetWeiboText, wtvUserName;
@@ -389,7 +386,7 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 			vWeiboTextandPicDivide = (View) itemView.findViewById(R.id.v_weiboTextandPicDivide);
 			vRetweerWeiboTextAndPicDivide = (View) itemView.findViewById(R.id.v_retweetWeiboTextandPicDivide);
 			
-			rimgUserIcon = (RoundImageView) itemView.findViewById(R.id.rimg_userIcon);
+			rimgUserIcon = (CircleImageView) itemView.findViewById(R.id.rimg_userIcon);
 			
 			imgMoreChoice = (ImageView) itemView.findViewById(R.id.img_moreChoice);
 			imgAttitude = (ImageView) itemView.findViewById(R.id.img_attitude);
@@ -472,13 +469,13 @@ public class StatusRecyclerAdapter extends RecyclerView.Adapter{
 	
 	class HeadViewHolder extends ViewHolder{
 
-		public RoundImageView rimgUserIcon;
+		public CircleImageView rimgUserIcon;
 		public TextView tvUserName, tvFriendsCount, tvStatusCount, tvFollowerCount, tvStatus, tvFollower, tvFriend;
 		public WeiboTextView wtvDescription;
 		public HeadViewHolder(View itemView) {
 			super(itemView);
 			// TODO Auto-generated constructor stub
-			rimgUserIcon = (RoundImageView) itemView.findViewById(R.id.rimg_userIcon);
+			rimgUserIcon = (CircleImageView) itemView.findViewById(R.id.rimg_userIcon);
 			tvUserName = (TextView) itemView.findViewById(R.id.tv_userName);
 			tvFriendsCount = (TextView) itemView.findViewById(R.id.tv_friendsCount);
 			tvFollowerCount = (TextView) itemView.findViewById(R.id.tv_followerCount);

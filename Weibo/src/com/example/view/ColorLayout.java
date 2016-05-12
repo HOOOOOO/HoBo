@@ -56,7 +56,7 @@ public class ColorLayout extends RelativeLayout{
  		space = s.dip2px(12);
  		marginY = s.dip2px(12);
  		int countOfColor = COLORS.length;
- 		System.out.println(TAG+" countOfColor:"+countOfColor);
+ 		//System.out.println(TAG+" countOfColor:"+countOfColor);
 // 		int colors[] = new int[countOfColor];
 // 		colors[0] = context.getResources().getColor(R.color.colorThemeWhite1);
 // 		colors[1] = context.getResources().getColor(R.color.colorThemeWhite2);
@@ -104,13 +104,13 @@ public class ColorLayout extends RelativeLayout{
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		// TODO Auto-generated method stub
-		System.out.println(TAG+" getMeasuredHeight():"+getMeasuredHeight());
-		System.out.println(TAG+" marginY:"+ marginY);
-		System.out.println(TAG+" rows:"+ rows);
-		System.out.println(TAG+" space:"+ space);
-		System.out.println(TAG+" size:"+ size);
+//		//System.out.println(TAG+" getMeasuredHeight():"+getMeasuredHeight());
+//		System.out.println(TAG+" marginY:"+ marginY);
+//		System.out.println(TAG+" rows:"+ rows);
+//		System.out.println(TAG+" space:"+ space);
+//		System.out.println(TAG+" size:"+ size);
 		padY = (getMeasuredHeight()-marginY*2-size*rows-space*(rows-1))/2;
-		System.out.println(TAG+" padY:"+padX );
+		//System.out.println(TAG+" padY:"+padX );
 		for (int i = 0; i < getChildCount(); i++) {
 			if(i == getChildCount()-1){
 				View child = getChildAt(i);

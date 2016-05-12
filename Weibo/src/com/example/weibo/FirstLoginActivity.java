@@ -1,6 +1,6 @@
 package com.example.weibo;
 
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
@@ -40,7 +40,7 @@ public class FirstLoginActivity extends Activity{
 	private Button button_login; 
 	private User mUser;
 	private TextView mTextView;
-	private RoundImageView mUserIcon;
+	private CircleImageView mUserIcon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class FirstLoginActivity extends Activity{
 		setContentView(R.layout.activity_first_login);
 		
 		mTextView = (TextView) findViewById(R.id.user_name);
-		mUserIcon = (RoundImageView) findViewById(R.id.ri_usericon);
+		mUserIcon = (CircleImageView) findViewById(R.id.ri_usericon);
 		button_login = (Button) findViewById(R.id.button_login);
 		getUserInfo();
 	}

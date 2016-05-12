@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:test="http://schemas.android.com/apk/res-auto">
     
-    <com.example.view.RoundImageView 
+    <com.example.view.CircleImageView
         android:id="@+id/rimg_userIcon"
         android:layout_width="130dp"
         android:layout_height="130dp"

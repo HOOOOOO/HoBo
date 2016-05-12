@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.view.CustomImageView;
 import com.example.view.Image;
 import com.example.view.NineGridlayout;
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 import com.example.view.WeiboTextView;
 import com.example.weibo.R;
 import com.example.weibo.UserPageActivity;
@@ -73,7 +73,7 @@ public class StatusListAdapter extends BaseAdapter {
             //convertView = LayoutInflater.from(context).inflate(R.layout.weibo_layout_night, parent, false);
         	convertView = LayoutInflater.from(context).inflate(R.layout.weibo_layout, parent, false);
             
-        	holder.usericon = (RoundImageView) convertView.findViewById(R.id.rimg_userIcon);    
+        	holder.usericon = (CircleImageView) convertView.findViewById(R.id.rimg_userIcon);
             holder.username = (WeiboTextView) convertView.findViewById(R.id.wtv_userName);
             holder.avatar_vip = (ImageView) convertView.findViewById(R.id.img_avatarVip);
             holder.faboshijian = (TextView) convertView.findViewById(R.id.tv_createTime);
@@ -476,7 +476,7 @@ public class StatusListAdapter extends BaseAdapter {
 	}
 	
     class ViewHolder{          
-        public RoundImageView usericon;     
+        public CircleImageView usericon;
         public WeiboTextView text, retweetweibotext, username;
         public TextView faboshijian;
         public View zhuanfa, pinglun, wiboTextDivide, wiboTextandPicDivide;

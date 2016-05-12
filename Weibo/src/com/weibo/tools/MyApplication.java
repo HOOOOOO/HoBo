@@ -33,6 +33,8 @@ public class MyApplication extends Application {
 	public static float mRate;
 	public static int mWidthOfWeiboLayout;
 	public static  int mHeightOfPadding;
+	public static boolean mShowNinePicture = false;
+	public static boolean mShouldLoadPicture = false;
 	
 	public static boolean mCanHide = false;
 	

@@ -2,7 +2,7 @@ package com.weibo.adapter;
 
 import java.util.ArrayList;
 
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 import com.example.view.WeiboTextView;
 import com.example.weibo.R;
 import com.example.weibo.UserPageActivity;
@@ -60,7 +60,7 @@ public class CommentAdapter extends BaseAdapter{
 			else		
 				convertView = LayoutInflater.from(mContext).inflate(R.layout.comment_layout, parent, false);
 			viewHolder.mCommentText = (WeiboTextView) convertView.findViewById(R.id.comment_text);
-			viewHolder.mUserIcon = (RoundImageView) convertView.findViewById(R.id.comment_usericon);
+			viewHolder.mUserIcon = (CircleImageView) convertView.findViewById(R.id.comment_usericon);
 			viewHolder.mCreateTime = (TextView) convertView.findViewById(R.id.comment_createtime);
 			convertView.setTag(viewHolder);
 		}
@@ -98,7 +98,7 @@ public class CommentAdapter extends BaseAdapter{
 	}
 	
 	class ViewHolder {
-		public RoundImageView mUserIcon;
+		public CircleImageView mUserIcon;
 		public WeiboTextView mCommentText;
 		public TextView mCreateTime;
 	}

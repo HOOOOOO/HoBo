@@ -16,7 +16,7 @@
       android:paddingRight="@dimen/marginLandR" 
       android:background="@drawable/shape_rounded_rectangle_top"> 
     
-    <com.example.view.RoundImageView 
+    <com.example.view.CircleImageView
         android:id="@+id/rimg_userIcon" 
         android:layout_width="45dp" 
         android:layout_height="45dp" 

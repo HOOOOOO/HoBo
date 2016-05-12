@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity{
 	private Oauth2AccessToken mAccessToken;
 	private DrawerLayout dlDrawer;
 	private HideTitleBarLayout htblHideTitleBar;
+	private ImageView ivFabBackground, ivFabShadow;
 	
 	private boolean isExit;
 	
@@ -78,7 +79,16 @@ public class MainActivity extends AppCompatActivity{
 			dlDrawer = (DrawerLayout) findViewById(R.id.dl_drawerLayout);
 			vpFragments = (ViewPager) findViewById(R.id.pager);
 
-			((ImageView)findViewById(R.id.iv_fab_background)).setColorFilter(MyApplication.mThemeColor);
+			ivFabBackground = ((ImageView)findViewById(R.id.iv_fab_background));
+			ivFabShadow = (ImageView) findViewById(R.id.iv_fab_shadow);
+			if(MyApplication.mIsNightMode) {
+				ivFabBackground.setImageResource(R.drawable.compose_background_night);
+				ivFabShadow.setVisibility(View.GONE);
+			}
+			else {
+				ivFabBackground.setColorFilter(MyApplication.mThemeColor);
+				ivFabShadow.setVisibility(View.VISIBLE);
+			}
 			((ImageView)findViewById(R.id.iv_fab_icon)).setColorFilter(MyApplication.mTitleColor);
 			
 		    MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager());

@@ -20,9 +20,7 @@
     
     <dimen name="marginLandR">10dip</dimen>
     <dimen name="marginTandE">10dip</dimen>
-    
-    
-    
+
     <color name="colorThemeGreen1">#2ecc71</color>
     <color name="colorThemeGreen2">#27ae60</color>
     <color name="colorThemeGreen3">#1abc9c</color>

@@ -23,7 +23,7 @@
         android:visibility="visible"
         android:textColor="@color/weibo_text_color"/>
 
-    <com.example.view.RoundImageView
+    <com.example.view.CircleImageView
         android:id="@+id/ri_usericon"
         android:layout_width="150dp"
         android:layout_height="150dp"

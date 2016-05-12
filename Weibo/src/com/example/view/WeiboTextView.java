@@ -136,7 +136,7 @@ public class WeiboTextView extends TextView{
 				 int emojiId = EmotionUtils.getImgByName(emoji);
 				 Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), emojiId);
 				 if(bitmap != null){
-					 bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth()/2, bitmap.getHeight()/2, true);
+					 bitmap = Bitmap.createScaledBitmap(bitmap, (int) getTextSize(), (int) getTextSize(), true);
 					 wSpannableString.setSpan(new ImageSpan(getContext(), bitmap, ImageSpan.ALIGN_BASELINE), matcher.start(3), matcher.start(3)+emoji.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 				 }
 			 }

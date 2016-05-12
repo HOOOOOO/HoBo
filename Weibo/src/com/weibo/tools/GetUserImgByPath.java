@@ -4,23 +4,22 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import com.example.view.RoundImageView;
+import com.example.view.CircleImageView;
 
-import android.R.mipmap;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 
-public class GetUserImgByPath extends AsyncTask<RoundImageView, Void, Bitmap>{
+public class GetUserImgByPath extends AsyncTask<CircleImageView, Void, Bitmap>{
 	
 	private String mId;
-	private RoundImageView mView;
+	private CircleImageView mView;
 	public GetUserImgByPath(String id) {
 		// TODO Auto-generated constructor stub
 		this.mId = id;
 	}
 	@Override
-	protected Bitmap doInBackground(RoundImageView... params) {
+	protected Bitmap doInBackground(CircleImageView... params) {
 		// TODO Auto-generated method stub
 		this.mView = params[0];
 		File file = new File(MyApplication.getContext().getFilesDir().getAbsolutePath()+MyApplication.PATH_OF_USERICON+"/"+mId+".jpg");

@@ -24,7 +24,7 @@
             android:orientation="vertical"
             android:layout_centerInParent="true"
             >
-             <com.example.view.RoundImageView 
+             <com.example.view.CircleImageView
             android:id="@+id/left_drawer_user_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
